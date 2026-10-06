@@ -35,6 +35,8 @@
 
 <h1>風俗じゃぱん ナディア神戸 ウィジェットテスト</h1>
 
+<h1>風俗じゃぱん ナディア神戸 ウィジェットテスト</h1>
+
 <div style="overflow: auto;">
   <iframe
     id="f_girldiary_widget"
@@ -42,8 +44,33 @@
     width="100%"
     frameborder="0"
     scrolling="no"
-    height="350">
+    height="">
   </iframe>
+
+  <script>
+    window.addEventListener('message', function (e) {
+      document.getElementById('f_girldiary_widget').height = e.data;
+      document.getElementById('f_girldiary_widget').setAttribute(
+        'width',
+        document.getElementById('f_girldiary_widget').parentNode.clientWidth + 'px'
+      );
+    }, false);
+
+    var queue = null,
+        wait = 300;
+
+    window.addEventListener('resize', function (e) {
+      clearTimeout(queue);
+
+      queue = setTimeout(function () {
+        document.getElementById('f_girldiary_widget').height = e.data;
+        document.getElementById('f_girldiary_widget').setAttribute(
+          'width',
+          document.getElementById('f_girldiary_widget').parentNode.clientWidth + 'px'
+        );
+      }, wait);
+    }, false);
+  </script>
 </div>
   
 </body>
